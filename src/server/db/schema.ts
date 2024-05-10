@@ -13,7 +13,7 @@ export const posts = createTable(
   {
     id: uuid("id").primaryKey(),
     address: text("address").notNull(),
-    name: text("name").notNull(),
+    name: text("name"),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updatedAt"),
     userId: uuid("user_id").notNull(),
