@@ -17,6 +17,8 @@ export const posts = createTable(
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updatedAt"),
     userId: uuid("user_id").notNull(),
+    askingPrice: text("asking_price"),
+    commissionRate: text("commission_rate").notNull()
   },
   (property) => ({
     nameIndex: index("property_id_created_at_idx").on(property.createdAt, property.id),

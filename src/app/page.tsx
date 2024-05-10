@@ -33,7 +33,9 @@ export default function HomePage() {
           <div className="relative w-full max-w-md">
             <SearchBar />
           </div>
-          <Button variant="outline">Add Property</Button>
+          <Link href="/add-property">
+            <Button variant="outline">Add Property</Button>
+          </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
           {properties.map((property) => <PropertyCard key={property.id} {...property} />)}
