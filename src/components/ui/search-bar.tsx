@@ -14,9 +14,9 @@ function SearchBar() {
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set('query', term);
+      params.set('q', term);
     } else {
-      params.delete('query');
+      params.delete('q');
     }
     replace(`${pathname}?${params.toString()}`);
   }

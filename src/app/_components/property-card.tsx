@@ -3,7 +3,6 @@ import { Button } from '~/components/ui/button';
 
 export type PropertyCardProps = {
   id: string
-  imageSrc: string;
   address: string;
   description: string;
 };
