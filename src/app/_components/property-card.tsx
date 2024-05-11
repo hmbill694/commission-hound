@@ -20,13 +20,13 @@ function PropertyCard({
         <div className="flex items-center justify-end mt-4 gap-3">
           <Button
             variant="outline"
-            className="border-red-500 text-red-500"
+            className="border-red-500 text-red-500 hover:bg-red-200"
           >
             Remove Property
           </Button>
           <Button
             variant="outline"
-            className="border-green-500 text-green-500"
+            className="border-green-500 text-green-500 hover:bg-green-200"
           >
             Mark as sold
           </Button>

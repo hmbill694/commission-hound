@@ -3,7 +3,7 @@ import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
 
-export default function Page() {
+export default function AddPropertyPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
       <div className="space-y-8">

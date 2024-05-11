@@ -1,7 +1,7 @@
 import { Input } from "~/components/ui/input"
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table"
 
-export default function Component() {
+export default function InquiresPage() {
   return (
     <div className="max-w-6xl mx-auto p-4 lg:px-6 sm:py-8 md:py-10">
       <section className="flex flex-col gap-4 sm:flex-row sm:items-center pb-4 sm:pb-8">
