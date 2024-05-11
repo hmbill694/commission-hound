@@ -34,7 +34,7 @@ export default function HomePage() {
             <SearchBar />
           </div>
           <Link href="/add-property">
-            <Button variant="outline">Add Property</Button>
+            <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-200">Add Property</Button>
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
