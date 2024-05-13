@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: commission_hound
+      POSTGRES_USER: big_dog
+      POSTGRES_PASSWORD: w00f
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  my_dbdata:

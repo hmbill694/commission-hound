@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '~/components/ui/button';
+import deleteProperty from '~/server/actions/deleteProperty';
 
 export type PropertyCardProps = {
   id: string
@@ -8,6 +9,7 @@ export type PropertyCardProps = {
 };
 
 function PropertyCard({
+  id,
   address,
   description,
 }: PropertyCardProps) {
@@ -16,7 +18,8 @@ function PropertyCard({
       <div className="p-4">
         <h3 className="text-lg font-bold">{address}</h3>
         <p className="text-gray-600 mt-2">{description}</p>
-        <div className="flex items-center justify-end mt-4 gap-3">
+        <form action={deleteProperty} className="flex items-center justify-end mt-4 gap-3">
+          <input hidden value={id} name='id' readOnly />
           <Button
             variant="outline"
             className="border-red-500 text-red-500 hover:bg-red-200"
@@ -29,7 +32,7 @@ function PropertyCard({
           >
             Mark as sold
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   );

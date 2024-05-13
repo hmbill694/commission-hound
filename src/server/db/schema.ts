@@ -6,9 +6,9 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
-export const createTable = pgTableCreator((name) => `commission-hound_${name}`);
+export const createTable = pgTableCreator((name) => name);
 
-export const posts = createTable(
+export const propertyTable = createTable(
   "property",
   {
     id: uuid("id").primaryKey(),
