@@ -2,27 +2,21 @@
 import React, { useMemo } from 'react'
 import PropertyCard, { PropertyCardProps } from './property-card'
 import { useSearchParams } from 'next/navigation'
+import useSearchBarFilter from '~/hooks/useSearchBarFiler'
 
 export type PropertyListProps = {
   properties: PropertyCardProps[]
 }
 
 function PropertyList({ properties }: PropertyListProps) {
-  const searchParams = useSearchParams();
+  const [visibleCards] = useSearchBarFilter({
+    data: properties,
+    filterFn: (ele, filterValue) =>
+      ele?.address?.toLocaleLowerCase()?.includes(filterValue.toLocaleLowerCase()) ||
+      ele?.description?.toLocaleLowerCase()?.includes(filterValue.toLocaleLowerCase())
+  })
 
-  const visibleCards = useMemo(() => {
-    const params = new URLSearchParams(searchParams)
-    const filterValue = params.get("q")
-
-    if (!filterValue) {
-      return properties
-    }
-
-    return properties.filter(ele => ele.address.includes(filterValue) || ele.description.includes(filterValue))
-
-  }, [properties, searchParams])
-
-  if (visibleCards.length === 0) {
+  if (!visibleCards || visibleCards.length === 0) {
     return (
       <div className="flex justify-center items-center h-full w-full">
         <div>No properties found. Let's onboard some!</div>

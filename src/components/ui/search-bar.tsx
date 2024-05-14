@@ -6,7 +6,11 @@ import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
 
 
-function SearchBar() {
+type SearchBarProps = {
+  queryParamName?: string
+}
+
+function SearchBar({ queryParamName = "q" }: SearchBarProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -14,9 +18,9 @@ function SearchBar() {
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set('q', term);
+      params.set(queryParamName, term);
     } else {
-      params.delete('q');
+      params.delete(queryParamName);
     }
     replace(`${pathname}?${params.toString()}`);
   }
@@ -27,7 +31,7 @@ function SearchBar() {
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        defaultValue={searchParams.get('query')?.toString()}
+        defaultValue={searchParams.get(queryParamName)?.toString()}
         name="q"
         className="pl-10 pr-4 py-2 rounded-md w-full"
         placeholder="Search properties..."

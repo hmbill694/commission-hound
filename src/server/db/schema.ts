@@ -17,7 +17,7 @@ export const propertyTable = createTable(
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updatedAt"),
     userId: uuid("user_id").notNull(),
-    askingPrice: text("asking_price"),
+    askingPrice: text("asking_price").notNull(),
     commissionRate: text("commission_rate").notNull()
   },
   (property) => ({

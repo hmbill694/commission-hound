@@ -1,5 +1,6 @@
 import Link from "next/link"
 import FeedbackButton from "../feeback-button"
+import { Button } from "./button"
 
 function Header() {
   return (
@@ -9,7 +10,14 @@ function Header() {
           Commission Hub
         </Link>
       </div>
-      <FeedbackButton />
+      <div>
+        <Link href={`/inquiries/123`}>
+          <Button>
+            My listings
+          </Button>
+        </Link>
+        <FeedbackButton />
+      </div>
     </header>
   )
 }
