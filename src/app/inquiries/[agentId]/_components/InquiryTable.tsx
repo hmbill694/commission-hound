@@ -9,7 +9,7 @@ const headerNames = [
 ]
 
 export type InquiryTableProps = {
-  properties: { address: string, commissionRate: string, askingPrice: string }[]
+  properties: { id: string, address: string, commissionRate: string, askingPrice: string }[]
 }
 
 export default function InquiryTable({ properties }: InquiryTableProps) {
@@ -23,12 +23,12 @@ export default function InquiryTable({ properties }: InquiryTableProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          {headerNames.map(colName => <TableHead className="w-[200px]">{colName}</TableHead>)}
+          {headerNames.map(colName => <TableHead key={colName} className="w-[200px]">{colName}</TableHead>)}
         </TableRow>
       </TableHeader>
       <TableBody>
         {filteredRows.map(property => (
-          <TableRow>
+          <TableRow key={property.id}>
             <TableCell className="font-medium">{property.address}</TableCell>
             <TableCell>{property.commissionRate}%</TableCell>
             <TableCell>${property.askingPrice}</TableCell>
