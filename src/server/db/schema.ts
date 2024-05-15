@@ -7,7 +7,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-export const createTable = pgTableCreator((name) => name);
+export const createTable = pgTableCreator((name) => `broker_boost_${name}`);
 
 export const propertyTable = createTable(
   "property",
