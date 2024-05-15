@@ -4,6 +4,7 @@ import {
   text,
   timestamp,
   uuid,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 export const createTable = pgTableCreator((name) => name);
@@ -16,7 +17,7 @@ export const propertyTable = createTable(
     name: text("name"),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updatedAt"),
-    userId: uuid("user_id").notNull(),
+    userId: varchar("user_id", { length: 256 }).notNull(),
     askingPrice: text("asking_price").notNull(),
     commissionRate: text("commission_rate").notNull()
   },

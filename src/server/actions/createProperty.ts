@@ -4,6 +4,7 @@ import { db } from "../db"
 import { propertyTable } from "../db/schema"
 import { v4 as uuidv4 } from 'uuid';
 import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 
 
 const createPropertyRequestSchema = z.object({
@@ -14,6 +15,10 @@ const createPropertyRequestSchema = z.object({
 })
 
 export default async function createProperty(formData: FormData) {
+  const user = auth();
+
+  if (!user.userId) throw new Error("Unauthorized");
+
   const formDataObject = Object.fromEntries(formData.entries())
 
   const { success, data, error } = createPropertyRequestSchema.safeParse(formDataObject)
@@ -28,7 +33,7 @@ export default async function createProperty(formData: FormData) {
     name: data.name,
     createdAt: new Date(),
     updatedAt: null,
-    userId: uuidv4(),
+    userId: user.userId,
     askingPrice: data.askingPrice,
     commissionRate: data.commissionRate
   })
