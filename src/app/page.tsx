@@ -16,7 +16,7 @@ export default async function HomePage() {
           <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-200">Add Property</Button>
         </Link>
       </div>
-      <PropertyList properties={properties ?? []} />
+      <PropertyList properties={properties.map(({ id, address, name, description }) => ({ id, address, name, description })) ?? []} />
     </>
   )
 }

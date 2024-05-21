@@ -21,7 +21,8 @@ export const propertyTable = createTable(
     updatedAt: timestamp("updatedAt"),
     userId: varchar("user_id", { length: 256 }).notNull(),
     askingPrice: text("asking_price").notNull(),
-    commissionRate: text("commission_rate").notNull()
+    commissionRate: text("commission_rate").notNull(),
+    description: text("description")
   },
   (property) => ({
     nameIndex: index("property_id_created_at_idx").on(property.createdAt, property.id),
