@@ -18,5 +18,5 @@ export default async function submitFeedback(formdata: FormData) {
 
 
   // TODO: SEND EMAIL TO ME
-  console.log("success")
+  console.log("success", data)
 }

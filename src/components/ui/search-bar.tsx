@@ -12,7 +12,7 @@ type SearchBarProps = {
 function SearchBar({ queryParamName = "q" }: SearchBarProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const router = useRouter();
 
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
@@ -21,7 +21,7 @@ function SearchBar({ queryParamName = "q" }: SearchBarProps) {
     } else {
       params.delete(queryParamName);
     }
-    replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`);
   }
 
   return (

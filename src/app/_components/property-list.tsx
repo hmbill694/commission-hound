@@ -1,7 +1,6 @@
 "use client"
-import React, { useMemo } from 'react'
-import PropertyCard, { PropertyCardProps } from './property-card'
-import { useSearchParams } from 'next/navigation'
+import React from 'react'
+import PropertyCard, { type PropertyCardProps } from './property-card'
 import useSearchBarFilter from '~/hooks/useSearchBarFiler'
 
 export type PropertyListProps = {
@@ -11,15 +10,18 @@ export type PropertyListProps = {
 function PropertyList({ properties }: PropertyListProps) {
   const [visibleCards] = useSearchBarFilter({
     data: properties,
-    filterFn: (ele, filterValue) =>
-      ele?.address?.toLocaleLowerCase()?.includes(filterValue.toLocaleLowerCase()) ||
-      ele?.description?.toLocaleLowerCase()?.includes(filterValue.toLocaleLowerCase())
+    filterFn: (ele, filterValue) => {
+      const description = ele?.description?.toLocaleLowerCase() ?? ""
+      const address = ele?.address?.toLocaleLowerCase() ?? ""
+
+      return description.includes(filterValue.toLocaleLowerCase()) || address.includes(filterValue.toLocaleLowerCase())
+    }
   })
 
   if (!visibleCards || visibleCards.length === 0) {
     return (
       <div className="flex justify-center items-center h-full w-full">
-        <div>No properties found. Let's onboard some!</div>
+        <div>No properties found. Let`&apos;`s onboard some!</div>
       </div>
     )
   }

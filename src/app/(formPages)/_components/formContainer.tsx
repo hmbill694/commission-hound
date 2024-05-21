@@ -1,5 +1,5 @@
 "use server"
-import React, { FormHTMLAttributes } from 'react'
+import React from 'react'
 
 type FormPageProps = {
   title: string

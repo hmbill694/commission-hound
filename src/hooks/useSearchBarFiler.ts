@@ -21,7 +21,7 @@ export default function useSearchBarFilter<T>({ data = [], searchParamName = 'q'
 
     return data.filter(ele => filterFn(ele, filterValue))
 
-  }, [data, searchParams, filterFn])
+  }, [data, searchParams, filterFn, searchParamName])
 
   return [filteredData ?? []]
 }

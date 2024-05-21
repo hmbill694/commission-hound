@@ -6,7 +6,7 @@ import { auth } from "@clerk/nextjs/server"
 
 export default async function Header() {
 
-  const { userId } = await auth()
+  const { userId } = auth()
 
   return (
     <header className="bg-gray-900 py-4 px-6 flex items-center justify-between">
