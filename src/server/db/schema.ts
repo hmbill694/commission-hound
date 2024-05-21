@@ -9,6 +9,8 @@ import {
 
 export const createTable = pgTableCreator((name) => `broker_boost_${name}`);
 
+// a comment
+
 export const propertyTable = createTable(
   "property",
   {
